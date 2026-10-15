@@ -22,8 +22,21 @@ Then open `localhost:5000`. Stop and remove everything with:
 ### Result
 ![App running in Docker](app-running.png)
 
+## Phase 2: CI/CD with GitHub Actions (done)
+Every push to `main` triggers a GitHub Actions workflow that builds the Docker image and pushes it to Docker Hub.
+
+- `.github/workflows/docker-publish.yml`: the pipeline
+- Docker Hub credentials are stored as GitHub secrets (`DOCKERHUB_USERNAME`, `DOCKERHUB_TOKEN`), never in the code
+
+![Docker Hub push](https://github.com/shaik204/devops-app-pipeline/actions/workflows/docker-publish.yml/badge.svg)
+
+Pull the image:
+
+    docker pull shaik204/devops-app-pipeline:latest
+
+    
 ## Roadmap
-- Phase 2: GitHub Actions builds the image and pushes it to Docker Hub
+- Phase 2 (Done): GitHub Actions builds the image and pushes it to Docker Hub
 - Phase 3: deploy to Kubernetes on a local cluster
 - Phase 4: create the AWS server with Terraform
 
