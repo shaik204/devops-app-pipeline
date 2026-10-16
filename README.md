@@ -70,13 +70,13 @@ terraform destroy
 
 AWS keys are never stored in this repo. I passed them as environment variables in my own terminal for one session, then deleted the key. `.gitignore` keeps Terraform state files out of Git. After testing, `terraform destroy` removed everything so nothing keeps running.
 
-![App running on AWS](terraform-running.png)
+![App running on AWS](terraform_running.png)
 
 ## Roadmap
 - Phase 1 (done): Docker Compose
 - Phase 2 (done): GitHub Actions builds the image and pushes it to Docker Hub
 - Phase 3 (done): Kubernetes on a local cluster
-- Phase 4: create the AWS server with Terraform
+- Phase 4 (done): create the AWS server with Terraform
   
 ## What I learned
 Containers find each other by service name, and restarting the app does not lose data stored in a separate database container.
