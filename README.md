@@ -52,7 +52,26 @@ Self-healing: when I deleted one web pod, Kubernetes created a new one automatic
 
 ![Kubernetes running](k8s_SS.png)
 
-    
+## Phase 4: Terraform (done)
+
+The AWS server is created from code. `terraform/main.tf` describes:
+
+- a security group that allows only web traffic on port 80 (no SSH port is open)
+- a t3.micro EC2 server whose startup script installs Docker and runs the Redis and web containers (image from Docker Hub)
+
+Commands, run from the `terraform/` folder:
+
+```
+terraform init
+terraform plan
+terraform apply
+terraform destroy
+```
+
+AWS keys are never stored in this repo. I passed them as environment variables in my own terminal for one session, then deleted the key. `.gitignore` keeps Terraform state files out of Git. After testing, `terraform destroy` removed everything so nothing keeps running.
+
+![App running on AWS](terraform-running.png)
+
 ## Roadmap
 - Phase 1 (done): Docker Compose
 - Phase 2 (done): GitHub Actions builds the image and pushes it to Docker Hub
