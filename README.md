@@ -20,7 +20,7 @@ Then open `localhost:5000`. Stop and remove everything with:
     docker compose down
 
 ### Result
-![App running in Docker](app-running.png)
+[App running in Docker](app_running.png)
 
 ## Phase 2: CI/CD with GitHub Actions (done)
 Every push to `main` triggers a GitHub Actions workflow that builds the Docker image and pushes it to Docker Hub.
@@ -54,12 +54,13 @@ Self-healing: when I deleted one web pod, Kubernetes created a new one automatic
 
     
 ## Roadmap
-- Phase 2 (Done): GitHub Actions builds the image and pushes it to Docker Hub
-- Phase 3: deploy to Kubernetes on a local cluster
+- Phase 1 (done): Docker Compose
+- Phase 2 (done): GitHub Actions builds the image and pushes it to Docker Hub
+- Phase 3 (done): Kubernetes on a local cluster
 - Phase 4: create the AWS server with Terraform
-
+  
 ## What I learned
 Containers find each other by service name, and restarting the app does not lose data stored in a separate database container.
 
 ## Tools
-Python, Flask, Redis, Docker, Docker Compose
+Python, Flask, Redis, Docker, Docker Compose, GitHub Actions, Docker Hub, Kubernetes
