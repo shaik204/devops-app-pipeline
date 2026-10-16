@@ -82,4 +82,4 @@ AWS keys are never stored in this repo. I passed them as environment variables i
 Containers find each other by service name, and restarting the app does not lose data stored in a separate database container.
 
 ## Tools
-Python, Flask, Redis, Docker, Docker Compose, GitHub Actions, Docker Hub, Kubernetes
+Python, Flask, Redis, Docker, Docker Compose, GitHub Actions, Docker Hub, Kubernetes, Terraform, AWS EC2
