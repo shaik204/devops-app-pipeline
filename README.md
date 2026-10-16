@@ -33,6 +33,24 @@ Every push to `main` triggers a GitHub Actions workflow that builds the Docker i
 Pull the image:
 
     docker pull shaik204/devops-app-pipeline:latest
+## Phase 3: Kubernetes (done)
+
+The same app now runs on a local Kubernetes cluster (Docker Desktop). The files are in the `k8s/` folder.
+
+- `redis.yaml`: a Deployment and a Service for Redis. The Service is named `redis`, so the app finds it by name.
+- `web.yaml`: a Deployment with 2 copies of the app (image from Docker Hub) and a LoadBalancer Service on port 5000.
+
+Deploy:
+
+```
+kubectl apply -f k8s/
+```
+
+Open http://localhost:5000 and refresh to watch the visit counter go up.
+
+Self-healing: when I deleted one web pod, Kubernetes created a new one automatically to keep 2 copies running.
+
+![Kubernetes running](k8s_SS.png)
 
     
 ## Roadmap
