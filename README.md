@@ -79,7 +79,11 @@ AWS keys are never stored in this repo. I passed them as environment variables i
 - Phase 4 (done): create the AWS server with Terraform
   
 ## What I learned
-Containers find each other by service name, and restarting the app does not lose data stored in a separate database container.
+- Containers find each other by service name, in both Docker Compose and Kubernetes.
+- Keeping Redis in its own container means the app can restart without losing the count. If the Redis container itself is removed, the data is lost unless a volume is used.
+- Kubernetes keeps the number of copies I ask for running, and replaces a pod automatically if it is deleted.
+- Terraform creates and destroys a server from code, so nothing is clicked by hand and nothing is left running.
+- Secrets stay out of GitHub: GitHub secrets for the pipeline, and environment variables for Terraform.
 
 ## Tools
 Python, Flask, Redis, Docker, Docker Compose, GitHub Actions, Docker Hub, Kubernetes, Terraform, AWS EC2
